@@ -1,0 +1,21 @@
+version: '3.6'
+services:
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    restart: unless-stopped
+    network_mode: bridge
+    environment:
+      - LANG=es_ES.UTF-8
+      - TZ=America/Bogota
+      - GF_DEFAULT_LOCALE=es-ES
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=123
+      - GF_INSTALL_PLUGINS=
+    ports:
+      - '3030:3000'
+    volumes:
+      - my_grafana_data:/var/lib/grafana
+
+volumes:
+  my_grafana_data:
